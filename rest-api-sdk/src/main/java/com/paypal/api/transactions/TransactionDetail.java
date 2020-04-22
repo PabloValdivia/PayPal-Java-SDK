@@ -1,8 +1,6 @@
 
 package com.paypal.api.transactions;
 
-import com.paypal.api.payments.PayerInfo;
-import com.paypal.api.payments.ShippingInfo;
 import com.paypal.base.rest.PayPalModel;
 
 import lombok.EqualsAndHashCode;
@@ -32,6 +30,15 @@ public class TransactionDetail extends PayPalModel
     public TransactionDetail() {
     }
 
-
-
+	public TransactionDetail(TransactionInfo transactionInfo, PayerInfo payerInfo, ShippingInfo shippingInfo,
+			CartInfo cartInfo, StoreInfo storeInfo, AuctionInfo auctionInfo, IncentiveInfo incentiveInfo) {
+		super();
+		this.transactionInfo = transactionInfo;
+		this.payerInfo = payerInfo;
+		this.shippingInfo = shippingInfo;
+		this.cartInfo = cartInfo;
+		this.storeInfo = storeInfo;
+		this.auctionInfo = auctionInfo;
+		this.incentiveInfo = incentiveInfo;
+	}
 }

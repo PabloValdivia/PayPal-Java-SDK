@@ -43,7 +43,18 @@ public class TransactionDetails extends PayPalResource
 			throw new IllegalArgumentException("containerMap cannot be null");
 		}
     	Object[] parameters = new Object[] {containerMap};
-    	String pattern = "/v1/reporting/transactions?start_date={0}&end_date={1}";
+    	String pattern = "/v1/reporting/transactions?start_date={0}&end_date={1}&fields=all";
+    	String resourcePath = RESTUtil.formatURIPath(pattern, parameters);
+    	String payLoad = "";
+    	return configureAndExecute(apiContext, HttpMethod.GET, resourcePath, payLoad, TransactionDetails.class);
+    }
+    
+    public static TransactionDetails getByIdTransaction(APIContext apiContext, Map<String, String> containerMap) throws PayPalRESTException {
+    	if (containerMap == null) {
+			throw new IllegalArgumentException("containerMap cannot be null");
+		}
+    	Object[] parameters = new Object[] {containerMap};
+    	String pattern = "/v1/reporting/transactions?transaction_id={0}&fields=all";
     	String resourcePath = RESTUtil.formatURIPath(pattern, parameters);
     	String payLoad = "";
     	return configureAndExecute(apiContext, HttpMethod.GET, resourcePath, payLoad, TransactionDetails.class);
